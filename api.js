@@ -19,7 +19,10 @@ var FLAVORS = [
   'white_cherry',
   'green_melon',
   'cherry',
-  'mandarin_tangarine'
+  'mandarin_tangarine',
+  'kiwi_strawberry',
+  'watermelon',
+  'pineapple'
 ];
 
 /**
