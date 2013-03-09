@@ -1,5 +1,7 @@
 <ul>
 {{#each stores}}
-  <li id="color_{{id}}" class="flavor" >{{name}} <div class="distance">{{distance}}mi</div></li>
+  <li id="color_{{id}}" class="flavor">{{name}} <div class="distance">{{distance}}mi</div></li>
+{{else}}
+  <li class="error">Sorry, we didn't find any nearby stores <span class="aww">:(</span></li>
 {{/each}}
 </ul>
