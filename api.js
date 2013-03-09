@@ -110,9 +110,7 @@ API.genParams = function(map) {
   var params = '?';
 
   for(var key in map) {
-
     var prefix = (params === '?' ? '' : '&');
-
     params += prefix + key + '=' + map[key];
   };
 
@@ -146,6 +144,11 @@ API.distance = function(lat1, long1, lat2, long2) {
   return d;
 };
 
+/**
+ * Gets GPS coords from a zip. Uses Google's Map API.
+ * @param zip
+ * @param callback
+ */
 //--------------------------------------------------------------------------------------------------
 API.coordsFromZip = function(zip, callback) {
 
