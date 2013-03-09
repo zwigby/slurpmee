@@ -1,4 +1,5 @@
 var request = require('request'),
+    async = require('async'),
     util = require('util');
 
 var API = {};
@@ -21,7 +22,36 @@ API.getStores = function(latitude, longitude, radius, callback) {
     callback = radius;
     radius = DEFAULT_RADIUS;
   }
-  API._call('/store/search.json', { lat: latitude, lon: longitude, radius: radius }, callback);
+
+  async.waterfall([
+    function(callback) {
+      API._call('/store/search.json', { lat: latitude, lon: longitude, radius: radius }, callback);
+    },
+    function(result, callback) {
+      API.fillStoreDetails(result, callback);
+    },
+    function(result, callback) {
+      result.content.forEach(function(store) {
+        store.distance = 5.7;
+      });
+      callback(null, result.content);
+    }
+  ], function(err, result) {
+    callback(result);
+  });
+};
+
+//--------------------------------------------------------------------------------------------------
+API.fillStoreDetails = function(stores, callback) {
+  var storeIds = [];
+  console.log(stores);
+  stores.content.forEach(function(store) {
+    storeIds.push(store.id);
+  });
+
+  var ids = storeIds.join();
+
+  API._call('/store/get_stores_by_id.json', { store_nums: ids }, callback);
 };
 
 //--------------------------------------------------------------------------------------------------
@@ -44,6 +74,8 @@ API._call = function(route, params, callback) {
     if(response.statusCode !== 200) {
       return callback(new Error(response.statusCode + ' ' + body));
     }
+    body = JSON.parse(body);
+    body.content = JSON.parse(body.content);
     return callback(null, body);
   });
 };
