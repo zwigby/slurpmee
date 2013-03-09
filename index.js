@@ -20,7 +20,7 @@ app.get('/chooseLocation', function(req, res) {
 
 app.get('/location/:zip', function(req, res) {
   api.getStoresForZip(req.params.zip, function(err, stores) {
-    res.render('flavorsByLocation');
+    res.render('flavorsByLocation', { stores: stores });
   });
 });
 

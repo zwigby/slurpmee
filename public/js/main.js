@@ -1,16 +1,17 @@
-// Test code from http://trek.github.com/
-// App = Ember.Application.create();
+$(function() {
+  $('#zip-submit').click(zipSubmitClick);
+});
 
-// App.ApplicationView = Ember.View.extend({
-//   templateName: 'application'
-// });
-// App.ApplicationController = Ember.Controller.extend();
+/**
+ * Occurs when the zip input submit button is clicked. Grabs the zip from the field
+ * and redirects to /location/zip.
+ * @param event
+ */
+//--------------------------------------------------------------------------------------------------
+var zipSubmitClick = function(event) {
+  event.preventDefault();
 
+  var zip = $('#zip-input').val();
 
-// App.Router = Ember.Router.extend({
-//   root: Ember.Route.extend({
-//     index: Ember.Route.extend({
-//       route: '/'
-//     })
-//   })
-// });
+  window.location = '/location/' + zip;
+};
