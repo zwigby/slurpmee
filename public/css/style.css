@@ -74,11 +74,6 @@ a {
   font-size: 1em;
   text-transform: uppercase;
   text-decoration: none;
-  -webkit-animation: wiggle .7s ease-in-out 1s 2;
-     -moz-animation: wiggle .7s ease-in-out 1s 2;
-      -ms-animation: wiggle .7s ease-in-out 1s 2;
-       -o-animation: wiggle .7s ease-in-out 1s 2;
-          animation: wiggle .7s ease-in-out 1s 2;
 }
 #main {
   position: absolute;
@@ -99,6 +94,13 @@ a {
 }
 .yellow {
   color: #f9ed32;
+}
+.wiggle {
+  -webkit-animation: wiggle .7s ease-in-out 1s 2;
+     -moz-animation: wiggle .7s ease-in-out 1s 2;
+      -ms-animation: wiggle .7s ease-in-out 1s 2;
+       -o-animation: wiggle .7s ease-in-out 1s 2;
+          animation: wiggle .7s ease-in-out 1s 2;
 }
 .intro {
   padding-top: 100px;
