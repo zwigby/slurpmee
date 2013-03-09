@@ -164,45 +164,67 @@ a {
   padding: 0 0 0 20px;
   text-transform: uppercase;
   border-bottom: 1px solid #888;
+  color: #FFF;
 }
 
 .flavor div {
   float: right;
   color: #414042;
   padding: 0 20px;
+  background-color: rgba(255, 255, 255, .5);
 }
 
 #color_blue_raspberry {
   background: #22eeb1;
-  color: #FFF;
 }
 
-#color_blue_raspberry div {
-  background: #5bf6d4;
-}
-
-.flavor .orange {
+#color_orange {
   background-color: #f7941e;
 }
 
-.flavor .strawberry {
+#color_strawberry {
   background-color: #ff2954;
 }
 
-.flavor .grape {
+#color_grape {
   background-color: #662d91;
 }
 
-.flavor .banana {
+#color_banana {
   background-color: #d7df23;
 }
 
-.flavor .blue_cherry {
+#color_blue_cherry {
   background-color: #00ddcc;
 }
 
-.flavor .white_cherry {
+#color_white_cherry {
   background-color: #fff;
+  color: #808285;
+}
+
+#color_green_melon {
+  background-color: #8dc63f;
+}
+
+#color_cherry {
+  background-color: #ed1c24;
+}
+
+#color_mandarin_tangarine {
+  background-color: #f15a29;
+}
+
+#color_kiwi_strawberry {
+  background-color: #39b54a;
+}
+
+#color_watermelon {
+  background-color: #ee2a7b;
+}
+
+#color_pineapple {
+  background-color: #f9ed32;
 }
 
 /* Keyframes */
