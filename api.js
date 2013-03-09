@@ -34,11 +34,19 @@ API.getStores = function(latitude, longitude, radius, callback) {
       API.fillStoreDetails(result, callback);
     },
     function(result, callback) {
-      result.content.forEach(function(store) {
+
+      var stores = result.content;
+
+      stores.forEach(function(store) {
         store.distance = API.distance(latitude, longitude,
           store.store_Address.coords.lat, store.store_Address.coords.lon);
       });
-      callback(null, result.content);
+
+      stores.sort(function(a, b) {
+        return a.distance - b.distance;
+      });
+
+      callback(null, stores);
     }
   ], function(err, result) {
     callback(result);
