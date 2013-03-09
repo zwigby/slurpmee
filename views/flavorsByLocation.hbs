@@ -1,5 +1,8 @@
+<ul>
 {{#each stores}}
-<p>
-  {{store_Address.address.address_line_1}} {{distance}}
-</p>
+  {{#each flavors}}
+    <li>{{flavor}} <span class="distance">{{../distance}}</span></li>
+  {{/each}}
 {{/each}}
+</ul>
+

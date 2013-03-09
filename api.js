@@ -48,13 +48,16 @@ API.getStores = function(latitude, longitude, radius, callback) {
     },
     function(result, callback) {
 
-      var stores = result.content;
+      var stores = result.content, i, len = Math.floor((Math.random() + 1) * 3);
 
       stores.forEach(function(store) {
         store.distance = API.distance(latitude, longitude,
           store.store_Address.coords.lat, store.store_Address.coords.lon);
 
-        store.flavor = FLAVORS[Math.floor(Math.random() * FLAVORS.length)];
+        store.flavors = [];
+        for (i = 0; i < len; i++) {
+          store.flavors[i] = { flavor: FLAVORS[Math.floor(Math.random() * FLAVORS.length)] };
+        };
       });
 
       stores.sort(function(a, b) {
