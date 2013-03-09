@@ -23,8 +23,8 @@ app.get('/location/:zip', function(req, res) {
 });
 
 app.get('/location/:lat/:long', function(req, res) {
-  api.getStores(req.params.lat, req.params.long, function(err, stores) {
-    res.render('flavorsByLocation');
+  api.getStores(req.params.lat, req.params.long, function(stores, err) {
+    res.render('flavorsByLocation', { stores: stores });
   });
 });
 

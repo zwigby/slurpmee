@@ -1,3 +1,5 @@
-{{#list flavors}}
-{{name}} {{distance}}
-{{/list}}
+{{#each stores}}
+<p>
+  {{store_Address.address.address_line_1}} {{distance}}
+</p>
+{{/each}}
