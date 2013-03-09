@@ -158,6 +158,42 @@ a {
   margin-top: 10px;
 }
 
+.flavor {
+
+}
+
+.flavor .blue-raspberry {
+  background-color: #22eeb1;
+}
+
+.flavor .orange {
+  background-color: #f7941e;
+}
+
+.flavor .strawberry {
+  background-color: #ff2954;
+}
+
+.flavor .grape {
+  background-color: #662d91;
+}
+
+.flavor .banana {
+  background-color: #d7df23;
+}
+
+.flavor .blue_cherry {
+  background-color: #00ddcc;
+}
+
+.flavor .white_cherry {
+  background-color: #fff;
+}
+
+.flavor .green_melon {
+  background-color:
+}
+
 /* Keyframes */
 @-webkit-keyframes wiggle {
   25% {
