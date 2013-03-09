@@ -32,7 +32,8 @@ API.getStores = function(latitude, longitude, radius, callback) {
     },
     function(result, callback) {
       result.content.forEach(function(store) {
-        store.distance = 5.7;
+        store.distance = API.distance(latitude, longitude,
+          store.store_Address.coords.lat, store.store_Address.coords.lon);
       });
       callback(null, result.content);
     }
@@ -93,6 +94,33 @@ API.genParams = function(map) {
   };
 
   return params;
+};
+
+/**
+ * Calculates the distance between two GPS coords. Solution from here:
+ * http://stackoverflow.com/questions/365826/calculate-distance-between-2-gps-coordinates
+ * @param lat1
+ * @param long1
+ * @param lat2
+ * @param long2
+ * @returns {number}
+ */
+API.distance = function(lat1, long1, lat2, long2) {
+
+  lat1 = parseFloat(lat1);
+  long1 = parseFloat(long1);
+  lat2 = parseFloat(lat2);
+  long2 = parseFloat(long2);
+
+  var d2r = Math.PI / 180;
+
+  var dlong = (long2 - long1) * d2r;
+  var dlat = (lat2 - lat1) * d2r;
+  var a = Math.pow(Math.sin(dlat/2.0), 2) + Math.cos(lat1*d2r) * Math.cos(lat2*d2r) * Math.pow(Math.sin(dlong/2.0), 2);
+  var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+  var d = 3956 * c;
+
+  return d;
 };
 
 module.exports = API;
