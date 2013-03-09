@@ -23,6 +23,9 @@ var zipSubmitClick = function(event) {
  * @param event
  */
 var locationSubmitClick = function(event) {
+
+  event.preventDefault();
+
   if (navigator.geolocation) {
     var timeoutVal = 10 * 1000 * 1000;
     navigator.geolocation.getCurrentPosition(
