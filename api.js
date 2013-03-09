@@ -35,7 +35,7 @@ var FLAVORS = [
 //--------------------------------------------------------------------------------------------------
 API.getStores = function(latitude, longitude, radius, callback) {
 
-  console.log('Getting stores for: (' + latitude + ',' + longitude + ')');
+  //console.log('Getting stores for: (' + latitude + ',' + longitude + ')');
 
   if(!callback) {
     callback = radius;
@@ -64,7 +64,7 @@ API.getStores = function(latitude, longitude, radius, callback) {
         return a.distance - b.distance;
       });
 
-      console.log(util.inspect(stores, false, 4));
+      //console.log(util.inspect(stores, false, 4));
 
       callback(null, stores);
     }
@@ -127,8 +127,8 @@ API._call = function(route, params, callback) {
 
   var url = URL + route + API.genParams(params);
 
-  console.log('Making API request');
-  console.log(url);
+  //console.log('Making API request');
+  //console.log(url);
 
   request({
     url: url,
@@ -156,7 +156,7 @@ API.genParams = function(map) {
   for(var key in map) {
     var prefix = (params === '?' ? '' : '&');
     params += prefix + key + '=' + map[key];
-  };
+  }
 
   return params;
 };
@@ -196,7 +196,7 @@ API.distance = function(lat1, long1, lat2, long2) {
 //--------------------------------------------------------------------------------------------------
 API.coordsFromZip = function(zip, callback) {
 
-  console.log('Getting stores for zip: ' + zip);
+  //console.log('Getting stores for zip: ' + zip);
 
   request({
     url: 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' + zip,
@@ -207,7 +207,7 @@ API.coordsFromZip = function(zip, callback) {
       return callback(err);
     }
     else if(response.statusCode !== 200) {
-      console.log(body);
+      //console.log(body);
       return callback(new Error(response.statusCode + ' ' + body));
     }
 

@@ -159,11 +159,26 @@ a {
 }
 
 .flavor {
-
+  height: 52px;
+  line-height: 52px;
+  padding: 0 0 0 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #888;
 }
 
-.flavor .blue-raspberry {
-  background-color: #22eeb1;
+.flavor div {
+  float: right;
+  color: #414042;
+  padding: 0 20px;
+}
+
+#color_blue_raspberry {
+  background: #22eeb1;
+  color: #FFF;
+}
+
+#color_blue_raspberry div {
+  background: #5bf6d4;
 }
 
 .flavor .orange {
@@ -188,10 +203,6 @@ a {
 
 .flavor .white_cherry {
   background-color: #fff;
-}
-
-.flavor .green_melon {
-  background-color:
 }
 
 /* Keyframes */

@@ -1,7 +1,5 @@
 <ul>
 {{#each stores}}
-  {{#each flavors}}
-    <li class="flavor {{flavor}}">{{flavor}} <span class="distance">{{../distance}}</span></li>
-  {{/each}}
+  <li id="color_{{id}}" class="flavor" >{{name}} <div class="distance">{{distance}}mi</div></li>
 {{/each}}
 </ul>
