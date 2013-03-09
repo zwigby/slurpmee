@@ -18,6 +18,9 @@ var DEFAULT_RADIUS = 50;
  */
 //--------------------------------------------------------------------------------------------------
 API.getStores = function(latitude, longitude, radius, callback) {
+
+  console.log('Getting stores for: (' + latitude + ',' + longitude + ')');
+
   if(!callback) {
     callback = radius;
     radius = DEFAULT_RADIUS;
@@ -40,6 +43,18 @@ API.getStores = function(latitude, longitude, radius, callback) {
   ], function(err, result) {
     callback(result);
   });
+};
+
+//--------------------------------------------------------------------------------------------------
+API.getStoresForZip = function(zip, callback) {
+  async.waterfall([
+    function(callback) {
+      API.coordsFromZip(zip, callback);
+    },
+    function(result, callback) {
+      API.getStores(result.lat, result.lon, callback);
+    }
+  ], callback);
 };
 
 //--------------------------------------------------------------------------------------------------
@@ -121,6 +136,38 @@ API.distance = function(lat1, long1, lat2, long2) {
   var d = 3956 * c;
 
   return d;
+};
+
+//--------------------------------------------------------------------------------------------------
+API.coordsFromZip = function(zip, callback) {
+
+  console.log('Getting stores for zip: ' + zip);
+
+  request({
+    url: 'https://maps.googleapis.com/maps/api/geocode/json?sensor=false&address=' + zip,
+    method: 'GET'
+  }, function(err, response, body) {
+    if(err) {
+      console.log(err);
+      return callback(err);
+    }
+    else if(response.statusCode !== 200) {
+      console.log(body);
+      return callback(new Error(response.statusCode + ' ' + body));
+    }
+
+    var results = JSON.parse(body).results;
+    if(results.length === 0) {
+      return callback(new Error('No coords found for zip.'));
+    }
+
+    var coords = {
+      lat: results[0].geometry.bounds.northeast.lat,
+      lon: results[0].geometry.bounds.northeast.lng
+    };
+
+    callback(null, coords);
+  });
 };
 
 module.exports = API;

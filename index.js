@@ -19,7 +19,9 @@ app.get('/chooseLocation', function(req, res) {
 });
 
 app.get('/location/:zip', function(req, res) {
-  res.render('flavorsByLocation');
+  api.getStoresForZip(req.params.zip, function(err, stores) {
+    res.render('flavorsByLocation');
+  });
 });
 
 app.get('/location/:lat/:long', function(req, res) {
