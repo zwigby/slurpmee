@@ -86,7 +86,6 @@ API.getStoresForZip = function(zip, callback) {
 //--------------------------------------------------------------------------------------------------
 API.fillStoreDetails = function(stores, callback) {
   var storeIds = [];
-  console.log(stores);
   stores.content.forEach(function(store) {
     storeIds.push(store.id);
   });
