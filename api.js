@@ -9,6 +9,19 @@ var URL = 'https://hackatx.appspot.com';
 
 var DEFAULT_RADIUS = 50;
 
+var FLAVORS = [
+  'blue_raspberry',
+  'orange',
+  'strawberry',
+  'grape',
+  'banana',
+  'blue_cherry',
+  'white_cherry',
+  'green_melon',
+  'cherry',
+  'mandarin_tangarine'
+];
+
 /**
  * Gets all stores based on the latitude, longitude, and radius.
  * @param latitude
@@ -40,6 +53,8 @@ API.getStores = function(latitude, longitude, radius, callback) {
       stores.forEach(function(store) {
         store.distance = API.distance(latitude, longitude,
           store.store_Address.coords.lat, store.store_Address.coords.lon);
+
+        store.flavor = FLAVORS[Math.floor(Math.random() * FLAVORS.length)];
       });
 
       stores.sort(function(a, b) {
