@@ -1,5 +1,6 @@
-var express = require('express');
-var app = express();
+var express = require('express'),
+    app = express(),
+    api = require('./api');
 
 var oneDay = 86400000;
 
@@ -22,7 +23,9 @@ app.get('/location/:zip', function(req, res) {
 });
 
 app.get('/location/:lat/:long', function(req, res) {
-  res.render('flavorsByLocation');
+  api.getStores(req.params.lat, req.params.long, function(err, stores) {
+    res.render('flavorsByLocation');
+  });
 });
 
 app.listen(process.env.PORT || 3000);
