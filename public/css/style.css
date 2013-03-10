@@ -25,6 +25,7 @@ time, mark, audio, video {
   /* TODO: fix le font */
   font-family: brandon-grotesque, sans-serif;
   color: #fff;
+  box-sizing: border-box;
 }
 /* HTML5 display-role reset for older browsers */
 article, aside, details, figcaption, figure,
@@ -54,19 +55,6 @@ h1 {
   font-size: 40px;
   text-transform: uppercase;
 }
-input[type=text] {
-  display: block;
-  margin: 5px auto;
-  padding-left: 5px;
-  height: 30px;
-  width: 150px;
-  border: none;
-  text-transform: uppercase;
-}
-input[type=input] {
-  display: block;
-  margin: auto;
-}
 a {
   display: block;
   margin: 5px auto;
@@ -93,7 +81,6 @@ a {
 }
 .intro h1 {
   color: #22eeb1;
-  margin-top: 35px
 }
 .get-started-link {
   background-color: #f9ed32;
@@ -112,12 +99,58 @@ a {
 .intro {
   background: #f12935;
 }
+
+.intro .hero {
+  margin-bottom: 35px;
+}
 .enter-location {
-  padding-top: 25px;
   background: #00bbcc;
 }
 .enter-location h1 {
-  margin-bottom: 50px;
+  color: #662d91;
+  margin-top: 20px;
+}
+
+.enter-location form {
+  width: 80%;
+  margin: 10px auto;
+}
+
+.enter-location form input[type=text] {
+  width: 66%;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.enter-location form button {
+  background-color: #f9ed32;
+  padding: 15px;
+  text-align: center;
+  font-size: 14px;
+  text-transform: uppercase;
+  border: 1px solid  #6d6e71;
+}
+
+.enter-location .divider {
+  width: 80%;
+  background: url('/img/divider.png') repeat-x 0 50%;
+  margin: 0 auto;
+}
+
+.enter-location .divider .divider-text {
+  background-color: #00bbcc;
+  padding: 5px 15px;
+}
+
+#location-submit {
+  background-color: #662d91;
+  color: #00bbcc;
+  text-transform: uppercase;
+  width: 80%;
+  padding: 15px;
+  margin-top: 10px;
 }
 
 /* Keyframes */
