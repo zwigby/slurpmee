@@ -23,7 +23,7 @@ time, mark, audio, video {
   font: inherit;
   vertical-align: baseline;
   /* TODO: fix le font */
-  font-family: sans-serif;
+  font-family: brandon-grotesque, sans-serif;
   color: #fff;
 }
 /* HTML5 display-role reset for older browsers */
@@ -51,7 +51,7 @@ table {
 }
 h1 {
   color: #fff;
-  font-size: 4em;
+  font-size: 40px;
   text-transform: uppercase;
 }
 input[type=text] {
@@ -71,7 +71,6 @@ a {
   display: block;
   margin: 5px auto;
   color: #fff;
-  font-size: 1em;
   text-transform: uppercase;
   text-decoration: none;
 }
@@ -87,13 +86,21 @@ a {
   height: 100%;
 }
 .big {
-  font-size: 4em;
+  font-size: 40px;
 }
 .medium {
-  font-size: 2.5em;
+  font-size: 20px;
 }
-.yellow {
-  color: #f9ed32;
+.intro h1 {
+  color: #22eeb1;
+  margin-top: 35px
+}
+.get-started-link {
+  background-color: #f9ed32;
+  color: #f12935;
+  text-transform: uppercase;
+  padding: 10px;
+  width: 136px;
 }
 .wiggle {
   -webkit-animation: wiggle .7s ease-in-out 1s 2;
@@ -103,7 +110,6 @@ a {
           animation: wiggle .7s ease-in-out 1s 2;
 }
 .intro {
-  padding-top: 100px;
   background: #f12935;
 }
 .enter-location {
