@@ -1,0 +1,17 @@
+{
+  "name": "slurpmee",
+  "version": "0.0.0",
+  "description": "The best mobile web app for finding slurpees.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/zwigby/slurpmee.git"
+  },
+  "author": "",
+  "license": "BSD",
+  "dependencies": {
+    "express": "~3.1.0",
+    "request": "~2.14.0",
+    "hbs": "~2.0.2"
+  }
+}
