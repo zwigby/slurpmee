@@ -102,6 +102,11 @@ a {
 
 .intro .hero {
   margin-bottom: 35px;
+  max-width: 600px;
+}
+
+.enter-location .header {
+  max-width: 600px;
 }
 .enter-location {
   background: #00bbcc;
