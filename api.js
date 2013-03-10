@@ -51,27 +51,48 @@ API.getStores = function(latitude, longitude, radius, callback) {
     },
     function(result, callback) {
 
-      var stores = result.content, i, len = Math.floor((Math.random() + 1) * 3);
+      var stores = result.content;
 
       stores.forEach(function(store) {
         store.distance = API.distance(latitude, longitude,
           store.store_Address.coords.lat, store.store_Address.coords.lon);
 
-        store.flavors = [];
-        for (i = 0; i < len; i++) {
-          store.flavors[i] = { flavor: FLAVORS[Math.floor(Math.random() * FLAVORS.length)] };
-        };
+        API.getFlavors(store);
       });
 
       stores.sort(function(a, b) {
         return a.distance - b.distance;
       });
 
+      console.log(util.inspect(stores, false, 4));
+
       callback(null, stores);
     }
   ], function(err, result) {
     callback(result);
   });
+};
+
+//--------------------------------------------------------------------------------------------------
+API.getFlavors = function(store) {
+
+  store.flavors = [];
+
+  var count = Math.floor(Math.random() * FLAVORS.length);
+  var chosen = {};
+
+  for(var i = 0; i < count; i++) {
+    var flavor = FLAVORS[Math.floor(Math.random() * FLAVORS.length)];
+    if(!chosen[flavor]) {
+      store.flavors.push(flavor);
+      chosen[flavor] = true;
+    }
+  }
+
+  // Always ensure there's one.
+  if(store.flavors.length === 0) {
+    store.flavors.push(FLAVORS[Math.floor(Math.random() * FLAVORS.length)]);
+  }
 };
 
 //--------------------------------------------------------------------------------------------------
@@ -90,7 +111,9 @@ API.getStoresForZip = function(zip, callback) {
 API.fillStoreDetails = function(stores, callback) {
   var storeIds = [];
   stores.content.forEach(function(store) {
-    storeIds.push(store.id);
+    if(storeIds.length < 10) {
+      storeIds.push(store.id);
+    }
   });
 
   var ids = storeIds.join();
@@ -120,6 +143,7 @@ API._call = function(route, params, callback) {
     }
     body = JSON.parse(body);
     body.content = JSON.parse(body.content);
+
     return callback(null, body);
   });
 };
