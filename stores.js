@@ -2,9 +2,12 @@ var Stores = {};
 
 Stores.filter = function(stores) {
   var flavors = {};
+  if(typeof stores === 'undefined') {
+    return [];
+  }
   if(!stores.hasOwnProperty('length') || !stores[0].flavors.hasOwnProperty('length')) {
     console.log('no stores or flavors');
-    return;
+    return [];
   }
   for (var i = 0; i < stores.length; i++) {
     var store = stores[i];
@@ -17,7 +20,7 @@ Stores.filter = function(stores) {
             name : flavor.replace('_',' '),
             lat : store.store_Address.coords.lat,
             lon : store.store_Address.coords.lon,
-            distance : store.distance
+            distance : store.distance.toFixed(1)
           };
         }
       } else {
@@ -26,7 +29,7 @@ Stores.filter = function(stores) {
           name : flavor.replace('_',' '),
           lat : store.store_Address.coords.lat,
           lon : store.store_Address.coords.lon,
-          distance : store.distance
+          distance : store.distance.toFixed(1)
         };
       }
     }
